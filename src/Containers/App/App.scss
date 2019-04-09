@@ -13,6 +13,16 @@ html,body{
             
             .main-content{
                 flex: 1;
+                background: #f2f4f7;
+                padding: 20px;
+                display: flex;
+                justify-content: center;
+
+                .route-content{
+                    height: 100%;
+                    width: 1150px;
+                    background: #fff;
+                }
             }
     
             .main-footer{

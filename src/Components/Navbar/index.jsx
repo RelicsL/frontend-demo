@@ -53,8 +53,13 @@ class Navbar extends React.Component{
             {
               false ? <div className="login-box">
                 <Icon type="user"/><a onClick={(e)=>{e.preventDefault()}}>登陆</a>
-              </div> : <Dropdown trigger={['click']} overlay={<Menu style={{width : '100px',textAlign:'center'}}><Menu.Item key="quit">登出</Menu.Item></Menu>}>
-                <a onClick={(e)=>{e.preventDefault()}}>Relics</a>
+              </div> : <Dropdown
+                overlay={
+                  <Menu style={{width : '100px',textAlign:'center'}}><Menu.Item key="quit">登出</Menu.Item></Menu>
+                }
+                placement="bottomCenter"
+              >
+                <a onClick={(e)=>{e.preventDefault()}}>Relics<Icon type="down" style={{ marginLeft : '5px'}}/></a>
               </Dropdown>
               
             }
