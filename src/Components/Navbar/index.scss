@@ -1,0 +1,32 @@
+.nav-bar{
+  width: 1240px;
+  margin: 0 auto;
+  display: flex;
+
+  .menu-with-logo{
+    height: 80px;
+    display: flex;
+    align-items: center;
+
+    img{
+      display: block;
+    }
+
+    .ant-menu{
+      background: #24467f;
+      border: none;
+      padding: 0 20px;
+
+      .ant-menu-item{
+        color: rgba(255, 255, 255, 0.65);
+      }
+
+      .ant-menu-item-selected{
+        color: #fff;
+      }
+
+    }
+
+  }
+
+}

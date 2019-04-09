@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.scss';
 import { Layout } from 'antd';
+import { Navbar } from '../../Components/Navbar/index';
+
 class App extends Component {
   render() {
     const { Header , Content , Footer } = Layout
@@ -8,9 +10,7 @@ class App extends Component {
       <div className="App">
         <Layout className="main-layout">
           <Header className="main-header">
-            <div className="logo">
-              <img src="http://s2.bai.itc.cn/r/c/themes_v1310711076/global/cr/0001/i/head-cr.gif" alt="logo"/>
-            </div>
+            <Navbar/>
           </Header>
           <Content className="main-content">
 
