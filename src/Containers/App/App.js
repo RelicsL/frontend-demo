@@ -9,7 +9,7 @@ class App extends Component {
         <Layout className="main-layout">
           <Header className="main-header">
             <div className="logo">
-              <img src="http://s2.bai.itc.cn/r/c/themes_v1310711076/global/cr/0001/i/head-cr.gif"/>
+              <img src="http://s2.bai.itc.cn/r/c/themes_v1310711076/global/cr/0001/i/head-cr.gif" alt="logo"/>
             </div>
           </Header>
           <Content className="main-content">
