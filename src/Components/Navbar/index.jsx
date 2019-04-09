@@ -1,9 +1,10 @@
 import React from 'react';
 import { Menu } from 'antd';
 import './index.scss';
-import { history } from '../History';
-
-export class Navbar extends React.Component{
+import { observe } from 'mobx'
+// import { history } from '../History';
+@observe
+class Navbar extends React.Component{
   render(){
     return (
       <header className="nav-bar">
@@ -14,7 +15,7 @@ export class Navbar extends React.Component{
             // selectedKeys={[this.state.current]}
             mode="horizontal"
           >
-            <Menu.Item onClick={()=>{console.log(history)}} key="校友学术">校友学术</Menu.Item>
+            <Menu.Item onClick={()=>{}} key="校友学术">校友学术</Menu.Item>
             <Menu.Item key="母校新闻">母校新闻</Menu.Item>
             <Menu.Item key="校园风光">校园风光</Menu.Item>
             <Menu.Item key="用户查找">用户查找</Menu.Item>
@@ -24,3 +25,4 @@ export class Navbar extends React.Component{
     )
   }
 }
+export default Navbar

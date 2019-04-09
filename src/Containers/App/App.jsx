@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
 import { Layout } from 'antd';
-import { Navbar } from '../../Components/Navbar/index';
+import  Navbar  from '../../Components/Navbar/index';
 
 class App extends Component {
   render() {
