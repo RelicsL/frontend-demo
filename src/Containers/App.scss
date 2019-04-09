@@ -1,0 +1,34 @@
+$mainBlue: blue;
+
+html,body{
+    height: 100%;
+}
+
+#root{
+    height: 100%;
+    .App{
+        height: 100%;
+        .main-layout{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            .main-header{
+                background: $mainBlue;
+                height: 50px;
+                padding: 0 20px;
+                .logo{
+                    width: fit-content;
+                }
+            }
+            
+            .main-content{
+                flex: 1;
+            }
+    
+            .main-footer{
+                height: 50px;
+                background: #f00;
+            }
+        }
+    }
+}
