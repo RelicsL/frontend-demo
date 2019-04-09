@@ -6,7 +6,7 @@ import App from './Containers/App/App.jsx';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter,Route} from 'react-router-dom';
 import { Provider } from 'mobx-react';
-import { stores } from './Store/store';
+import { stores } from './Stores/stores';
 
 ReactDOM.render(
   <Provider stores={stores}>

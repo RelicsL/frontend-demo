@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Layout, Icon, Dropdown } from 'antd';
+import { Menu, Icon, Dropdown } from 'antd';
 import './index.scss';
 import { Link } from 'react-router-dom';
 import { baseInject } from '../History/history';
@@ -28,7 +28,7 @@ class Navbar extends React.Component{
 
   render(){
     return (
-      <Layout.Header className="main-header">
+      <header className="main-header">
         <header className="nav-bar">
           <div className="menu-with-logo">
             <img src="http://s2.bai.itc.cn/r/c/themes_v1310711076/global/cr/0001/i/head-cr.gif" alt="logo"/>
@@ -65,7 +65,7 @@ class Navbar extends React.Component{
             }
           </div>
         </header>
-      </Layout.Header>
+      </header>
     )
   }
 }
