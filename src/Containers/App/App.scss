@@ -10,14 +10,6 @@ html,body{
         height: 100%;
         .main-layout{
             height: 100%;
-            .main-header{
-                background: $darkBlue;
-                height: 80px;
-                padding: 0 20px;
-                .logo{
-                    width: fit-content;
-                }
-            }
             
             .main-content{
                 flex: 1;

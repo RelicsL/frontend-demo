@@ -5,19 +5,19 @@ import  Navbar  from '../../Components/Navbar/index';
 import { Route, Switch, Redirect } from 'react-router';
 class App extends Component {
   render() {
-    const { Header , Content , Footer } = Layout
+    const { Content , Footer } = Layout
     return (
       <div className="App">
         <Layout className="main-layout">
-          <Header className="main-header">
-            <Navbar/>
-          </Header>
+          <Navbar/>
           <Content className="main-content">
             <Switch>
               <Route path="/learning" />
               <Route path="/news" />
               <Route path="/scenery" />
               <Route path="/search" />
+              <Route path="/login" />
+              <Route path="/register" />
               <Redirect from="/" exact to="/learning"/>
             </Switch>
           </Content>

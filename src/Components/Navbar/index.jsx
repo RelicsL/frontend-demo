@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu } from 'antd';
+import { Menu, Layout, Icon, Dropdown } from 'antd';
 import './index.scss';
 import { Link } from 'react-router-dom';
 import { baseInject } from '../History/history';
@@ -28,27 +28,39 @@ class Navbar extends React.Component{
 
   render(){
     return (
-      <header className="nav-bar">
-        <div className="menu-with-logo">
-          <img src="http://s2.bai.itc.cn/r/c/themes_v1310711076/global/cr/0001/i/head-cr.gif" alt="logo"/>
-          <Menu
-            mode="horizontal"
-          >
-            <Menu.Item key="learning" className={this.stores.linkSelected === 'learning' ? 'nav-link-active' : ''} onClick={()=>{this.stores.setLinkSelected('learning')}}>
-              <Link to="/learning">校友学术</Link> 
-            </Menu.Item>
-            <Menu.Item key="news" className={this.stores.linkSelected === 'news' ? 'nav-link-active' : ''} onClick={()=>{this.stores.setLinkSelected('news')}}>
-              <Link to="/news">母校新闻</Link>
-            </Menu.Item>
-            <Menu.Item key="scenery" className={this.stores.linkSelected === 'scenery' ? 'nav-link-active' : ''} onClick={()=>{this.stores.setLinkSelected('scenery')}}>
-              <Link to="/scenery" >校园风光</Link>
-            </Menu.Item>
-            <Menu.Item key="search" className={this.stores.linkSelected === 'search' ? 'nav-link-active' : ''} onClick={()=>{this.stores.setLinkSelected('search')}}>
-              <Link to="/search">用户查找</Link>
-            </Menu.Item>
-          </Menu>
-        </div>
-      </header>
+      <Layout.Header className="main-header">
+        <header className="nav-bar">
+          <div className="menu-with-logo">
+            <img src="http://s2.bai.itc.cn/r/c/themes_v1310711076/global/cr/0001/i/head-cr.gif" alt="logo"/>
+            <Menu
+              mode="horizontal"
+            >
+              <Menu.Item key="learning" className={this.stores.linkSelected === 'learning' ? 'nav-link-active' : ''} onClick={()=>{this.stores.setLinkSelected('learning')}}>
+                <Link to="/learning">校友学术</Link> 
+              </Menu.Item>
+              <Menu.Item key="news" className={this.stores.linkSelected === 'news' ? 'nav-link-active' : ''} onClick={()=>{this.stores.setLinkSelected('news')}}>
+                <Link to="/news">母校新闻</Link>
+              </Menu.Item>
+              <Menu.Item key="scenery" className={this.stores.linkSelected === 'scenery' ? 'nav-link-active' : ''} onClick={()=>{this.stores.setLinkSelected('scenery')}}>
+                <Link to="/scenery" >校园风光</Link>
+              </Menu.Item>
+              <Menu.Item key="search" className={this.stores.linkSelected === 'search' ? 'nav-link-active' : ''} onClick={()=>{this.stores.setLinkSelected('search')}}>
+                <Link to="/search">用户查找</Link>
+              </Menu.Item>
+            </Menu>
+          </div>
+          <div className="user-box">
+            {
+              false ? <div className="login-box">
+                <Icon type="user"/><a onClick={(e)=>{e.preventDefault()}}>登陆</a>
+              </div> : <Dropdown trigger={['click']} overlay={<Menu style={{width : '100px',textAlign:'center'}}><Menu.Item key="quit">登出</Menu.Item></Menu>}>
+                <a onClick={(e)=>{e.preventDefault()}}>Relics</a>
+              </Dropdown>
+              
+            }
+          </div>
+        </header>
+      </Layout.Header>
     )
   }
 }
