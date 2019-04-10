@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import './App.scss';
-import  { Navbar }  from '../../Components/Navbar';
+import './index.scss';
+import  { Navbar }  from '../../components/Navbar';
 import { Route, Switch, Redirect } from 'react-router';
 import { Learning } from '../Learning';
-import { observer } from 'mobx-react';
+import { Login } from '../Login'
 
-@observer
 export class App extends Component {
   render() {
     return (
@@ -19,7 +18,7 @@ export class App extends Component {
                 <Route path="/news" />
                 <Route path="/scenery" />
                 <Route path="/search" />
-                <Route path="/login" />
+                <Route path="/login" component={Login} />
                 <Route path="/register" />
                 <Redirect from="/" exact to="/learning"/>
               </Switch>

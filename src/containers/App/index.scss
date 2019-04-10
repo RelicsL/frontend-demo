@@ -7,6 +7,10 @@ html,body{
 
 #root{
     height: 100%;
+    .ant-btn{
+        height: 36px;
+        width: 136px;
+    }
     .App{
         height: 100%;
         .main-layout{
@@ -20,7 +24,6 @@ html,body{
                 justify-content: center;
 
                 .route-content{
-                    height: 100%;
                     width: 1150px;
                     background: #fff;
                 }

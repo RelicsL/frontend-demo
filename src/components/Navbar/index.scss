@@ -47,9 +47,8 @@ $normalWhite : rgba(255, 255, 255, 0.65);
     .user-box{
       line-height: 80px;
 
-      a,.anticon-user{
+      a,.anticon-user,span{
         color: $normalWhite;
-        cursor: pointer;
       }
 
       .anticon-user{

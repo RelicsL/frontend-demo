@@ -70,7 +70,8 @@ export class Navbar extends React.Component{
             {
               true ? <div className="login-box">
                 <Icon type="user" className={this.stores.loginSelected === 'login' ? 'nav-link-active' : ''}/>
-                  <Link to="/login" className={this.stores.loginSelected === 'login' ? 'nav-link-active' : ''}>登陆 /</Link>
+                  <Link to="/login" className={this.stores.loginSelected === 'login' ? 'nav-link-active' : ''}>登陆 </Link>
+                  <span>/</span>
                   <Link to="/register" className={this.stores.loginSelected === 'register' ? 'nav-link-active' : ''}> 注册</Link>
               </div> : <Dropdown
                 overlay={
