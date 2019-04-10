@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './App.scss';
-import  Navbar  from '../../Components/Navbar/index';
+import  { Navbar }  from '../../Components/Navbar';
 import { Route, Switch, Redirect } from 'react-router';
-import { Learning } from '../Learning/index';
+import { Learning } from '../Learning';
+import { observer } from 'mobx-react';
 
-class App extends Component {
+@observer
+export class App extends Component {
   render() {
     return (
       <div className="App">
@@ -32,4 +34,4 @@ class App extends Component {
   }
 }
 
-export default App;
+

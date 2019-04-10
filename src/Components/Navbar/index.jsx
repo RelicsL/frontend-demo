@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { baseInject } from '../History/history';
 
 @baseInject
-class Navbar extends React.Component{
+export class Navbar extends React.Component{
   get path(){
     return this.props.location.pathname;
   }
@@ -14,16 +14,33 @@ class Navbar extends React.Component{
     return this.props.stores;
   }
 
-  componentDidMount(){
+  setActiveLink(){
     if(this.path.includes('news')){
-      this.stores.setLinkSelected('news')
+      this.stores.setLinkSelected('news');
     }else if(this.path.includes('scenery')){
-      this.stores.setLinkSelected('scenery')
+      this.stores.setLinkSelected('scenery');
     }else if(this.path.includes('search')){
-      this.stores.setLinkSelected('search')
+      this.stores.setLinkSelected('search');
+    }else if(this.path.includes('learning')){
+      this.stores.setLinkSelected('learning');
     }else{
-      this.stores.setLinkSelected('learning')
+      this.stores.setLinkSelected('')
     }
+    if(this.path.includes('login')){
+      this.stores.setLoginSelected('login')
+    }else if(this.path.includes('register')){
+      this.stores.setLoginSelected('register')
+    }else{
+      this.stores.setLoginSelected('')
+    }
+  }
+
+  componentDidUpdate(){
+    this.setActiveLink();
+  }
+  
+  componentWillMount(){
+    this.setActiveLink();
   }
 
   render(){
@@ -35,24 +52,26 @@ class Navbar extends React.Component{
             <Menu
               mode="horizontal"
             >
-              <Menu.Item key="learning" className={this.stores.linkSelected === 'learning' ? 'nav-link-active' : ''} onClick={()=>{this.stores.setLinkSelected('learning')}}>
+              <Menu.Item key="learning" className={this.stores.linkSelected === 'learning' ? 'nav-link-active' : ''} >
                 <Link to="/learning">校友学术</Link> 
               </Menu.Item>
-              <Menu.Item key="news" className={this.stores.linkSelected === 'news' ? 'nav-link-active' : ''} onClick={()=>{this.stores.setLinkSelected('news')}}>
+              <Menu.Item key="news" className={this.stores.linkSelected === 'news' ? 'nav-link-active' : ''} >
                 <Link to="/news">母校新闻</Link>
               </Menu.Item>
-              <Menu.Item key="scenery" className={this.stores.linkSelected === 'scenery' ? 'nav-link-active' : ''} onClick={()=>{this.stores.setLinkSelected('scenery')}}>
+              <Menu.Item key="scenery" className={this.stores.linkSelected === 'scenery' ? 'nav-link-active' : ''} >
                 <Link to="/scenery" >校园风光</Link>
               </Menu.Item>
-              <Menu.Item key="search" className={this.stores.linkSelected === 'search' ? 'nav-link-active' : ''} onClick={()=>{this.stores.setLinkSelected('search')}}>
+              <Menu.Item key="search" className={this.stores.linkSelected === 'search' ? 'nav-link-active' : ''} >
                 <Link to="/search">用户查找</Link>
               </Menu.Item>
             </Menu>
           </div>
           <div className="user-box">
             {
-              false ? <div className="login-box">
-                <Icon type="user"/><a onClick={(e)=>{e.preventDefault()}}>登陆</a>
+              true ? <div className="login-box">
+                <Icon type="user" className={this.stores.loginSelected === 'login' ? 'nav-link-active' : ''}/>
+                  <Link to="/login" className={this.stores.loginSelected === 'login' ? 'nav-link-active' : ''}>登陆 /</Link>
+                  <Link to="/register" className={this.stores.loginSelected === 'register' ? 'nav-link-active' : ''}> 注册</Link>
               </div> : <Dropdown
                 overlay={
                   <Menu style={{width : '100px',textAlign:'center'}}><Menu.Item key="quit">登出</Menu.Item></Menu>
@@ -61,7 +80,6 @@ class Navbar extends React.Component{
               >
                 <a onClick={(e)=>{e.preventDefault()}}>Relics<Icon type="down" style={{ marginLeft : '5px'}}/></a>
               </Dropdown>
-              
             }
           </div>
         </header>
@@ -69,4 +87,3 @@ class Navbar extends React.Component{
     )
   }
 }
-export default Navbar
