@@ -1,0 +1,16 @@
+.scenery-box{
+  padding-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+
+  .ant-card{
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 262px;
+
+    img{
+      height: 172px;
+    }
+  }
+
+}

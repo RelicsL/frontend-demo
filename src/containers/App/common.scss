@@ -1,13 +1,13 @@
-.learning-tabs{
+.tabs{
   height: 100%;
 
-  .learning-box{
+  .box{
     height: 100%;
     padding: 20px;
     padding-top: 0;
     background: #fff;
   
-    .learning-sider{
+    .sider{
       .title{
         height: 30px;
         line-height: 30px;
@@ -45,7 +45,7 @@
   
     }
   
-    .learning-content{
+    .content{
       padding-left: 20px;
       position: relative;
       .more{

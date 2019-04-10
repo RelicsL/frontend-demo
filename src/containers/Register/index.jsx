@@ -3,7 +3,7 @@ import { Tabs, Form, Input, Icon, Checkbox, Button } from 'antd';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 
 
-class LoginForm extends React.Component{
+class RegisterForm extends React.Component{
 
   onSubmit = async(e) => {
     e.preventDefault()
@@ -55,15 +55,37 @@ class LoginForm extends React.Component{
               }
             </Form.Item>
             <Form.Item
-              wrapperCol={{offset : 7}}
+              label="学号"
             >
               {
-                getFieldDecorator('remember',{ })(
-                  <Checkbox>记住密码</Checkbox>
+                getFieldDecorator('studentId',{
+                  rules: [
+                    { required:'number',message:'请输入学号'},
+                    { len:10,message:'学号长度为10'},
+                    {pattern:/^[0-9]*$/,message:'手机号为纯数字'},
+                  ]
+                })(
+                  <Input placeholder="请输入学号" />
                 )
               }
-              <span style={{ fontSize : '12px' }}>没有账号？<Link to="/register">去注册></Link></span>
-              <Button type="primary" htmlType="submit" style={{marginLeft:"135px"}} >登陆</Button>
+            </Form.Item>
+            <Form.Item
+              label="手机号"
+            >
+              {
+                getFieldDecorator('phone',{
+                  rules: [
+                    { required:'number',message:'请输入手机号'},
+                    { len:11,message:'手机号为10位的纯数字'},
+                    { pattern:/^[0-9]*$/,message:'手机号为纯数字' },
+                  ]
+                })(
+                  <Input placeholder="请输入手机号" />
+                )
+              }
+            </Form.Item>
+            <Form.Item>
+              <Button style={{marginLeft:'680px'}} type="primary" htmlType="submit">注册</Button>
             </Form.Item>
           </Form>
         </Tabs.TabPane>
@@ -71,4 +93,4 @@ class LoginForm extends React.Component{
     )
   }
 }
-export const Login = Form.create()(LoginForm)
+export const Register = Form.create()(RegisterForm)

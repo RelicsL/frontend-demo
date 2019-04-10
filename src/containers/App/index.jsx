@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import './index.scss';
+import './common.scss';
 import  { Navbar }  from '../../components/Navbar';
 import { Route, Switch, Redirect } from 'react-router';
 import { Learning } from '../Learning';
-import { Login } from '../Login'
+import { News } from '../News';
+import { Scenery } from '../Scenery';
+import { Search } from '../Search';
+import { Login } from '../Login';
+import { Register } from '../Register';
 
 export class App extends Component {
   render() {
@@ -15,11 +20,11 @@ export class App extends Component {
             <div className="route-content">
               <Switch>
                 <Route path="/learning" component={Learning} />
-                <Route path="/news" />
-                <Route path="/scenery" />
-                <Route path="/search" />
+                <Route path="/news" component={News} />
+                <Route path="/scenery" component={Scenery} />
+                <Route path="/search" component={Search} />
                 <Route path="/login" component={Login} />
-                <Route path="/register" />
+                <Route path="/register" component={Register} />
                 <Redirect from="/" exact to="/learning"/>
               </Switch>
             </div>
