@@ -18,6 +18,7 @@ import { configure } from 'mobx';
 configure({enforceActions: 'always'})
 
 export class App extends Component {
+
   render() {
     return (
       <div className="App">
@@ -27,7 +28,7 @@ export class App extends Component {
             <div className="route-content">
               <Switch>
                 <Route path="/:pid/list" component={MoreList} />
-                <Route path="/:pid/detail" component={Detail} />
+                <Route path="/:pid/detail/:did" component={Detail} />
                 <Route exact path="/learning" component={Learning} />
                 <Route exact path="/news" component={News} />
                 <Route path="/scenery" component={Scenery} />
