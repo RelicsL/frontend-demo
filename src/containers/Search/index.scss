@@ -1,0 +1,28 @@
+.search-box{
+  text-align: center;
+  padding-top: 30px;
+
+  .search-input {
+    width: 460px;
+  }
+
+  .search-btn{
+    width: 90px;
+    height: 32px;
+    margin-left: 5px;
+  }
+
+}
+
+.result-box {
+  padding: 100px 100px 0;
+  
+  hr {
+    color: rgba(0 , 0 , 0 , .45);
+  }
+
+  .no-result {
+    color: rgba(0 , 0 , 0 , .45);
+    text-align: center;
+  }
+}

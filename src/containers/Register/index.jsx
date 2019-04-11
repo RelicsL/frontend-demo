@@ -1,18 +1,27 @@
 import React from 'react';
-import { Tabs, Form, Input, Icon, Checkbox, Button } from 'antd';
-import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { Tabs, Form, Input, Icon, Button, DatePicker } from 'antd';
+import { showMessage } from '../../components/Message';
+import { observable, action } from 'mobx';
+import { observer } from 'mobx-react';
 
-
+@observer
 class RegisterForm extends React.Component{
+  @observable selectDate = '';
 
   onSubmit = async(e) => {
     e.preventDefault()
     this.props.form.validateFields((err)=>{
       if(!err){
         const values = this.props.form.getFieldsValue()
-        console.log('success',values)
+        console.log(values,this.selectDate)
+        showMessage('注册成功！')
       }
     })
+  }
+
+  @action
+  changeDate = (_,dataString) => {
+    this.selectDate = dataString;
   }
 
   render(){
@@ -55,32 +64,45 @@ class RegisterForm extends React.Component{
               }
             </Form.Item>
             <Form.Item
-              label="学号"
+              label="系别"
             >
               {
-                getFieldDecorator('studentId',{
+                getFieldDecorator('tie',{
                   rules: [
-                    { required:'number',message:'请输入学号'},
-                    { len:10,message:'学号长度为10'},
-                    {pattern:/^[0-9]*$/,message:'手机号为纯数字'},
+                    { required:true,message:'请输入系别'},
                   ]
                 })(
-                  <Input placeholder="请输入学号" />
+                  <Input placeholder="请输入系别" />
                 )
               }
             </Form.Item>
             <Form.Item
-              label="手机号"
+              label="班级"
             >
               {
-                getFieldDecorator('phone',{
+                getFieldDecorator('class',{
                   rules: [
-                    { required:'number',message:'请输入手机号'},
-                    { len:11,message:'手机号为10位的纯数字'},
-                    { pattern:/^[0-9]*$/,message:'手机号为纯数字' },
+                    { required:true ,message:'请输入班级'},
                   ]
                 })(
-                  <Input placeholder="请输入手机号" />
+                  <Input placeholder="请输入班级" />
+                )
+              }
+            </Form.Item>
+            <Form.Item
+              label="入学时间"
+            >
+              {
+                getFieldDecorator('date',{
+                  rules: [
+                    { required:'number',message:'请选择入学时间'},
+                  ]
+                })(
+                  <DatePicker
+                    format="YYYY/MM/DD"
+                    placeholder="请选择入学时间" 
+                    onChange={this.changeDate}
+                  />
                 )
               }
             </Form.Item>
