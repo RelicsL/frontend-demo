@@ -1,16 +1,25 @@
 import React from 'react';
 import { Tabs, Form, Input, Icon, Checkbox, Button } from 'antd';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { api } from '../../api';
+import { showError, showMessage } from '../../components/Message';
+import { baseInject } from '../../components/History/history';
 
-
+@baseInject
 class LoginForm extends React.Component{
 
-  onSubmit = async(e) => {
-    e.preventDefault()
-    this.props.form.validateFields((err)=>{
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.props.form.validateFields(async(err)=>{
       if(!err){
-        const values = this.props.form.getFieldsValue()
-        console.log('success',values)
+        const values = this.props.form.getFieldsValue();
+        const d = await api.login(values.name,values.password);
+        if(d){
+          showError(d.msg);
+        }else{
+          showMessage('登陆成功');
+          this.props.history.push('/learning')
+        }
       }
     })
   }

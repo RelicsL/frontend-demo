@@ -1,22 +1,38 @@
 import React from 'react';
 import { Tabs, Form, Input, Icon, Button, DatePicker } from 'antd';
-import { showMessage } from '../../components/Message';
+import { showMessage, showError } from '../../components/Message';
 import { observable, action } from 'mobx';
-import { observer } from 'mobx-react';
+import { baseInject } from '../../components/History/history';
+import { api } from '../../api';
 
-@observer
+@baseInject
 class RegisterForm extends React.Component{
   @observable selectDate = '';
+  @observable loading = false;
 
-  onSubmit = async(e) => {
+  @action
+  setLoading(val){
+    this.loading = val;
+  }
+
+  onSubmit = (e) => {
+    this.setLoading(true);
     e.preventDefault()
-    this.props.form.validateFields((err)=>{
+    this.props.form.validateFields(async(err)=>{
       if(!err){
-        const values = this.props.form.getFieldsValue()
-        console.log(values,this.selectDate)
-        showMessage('注册成功！')
+        const values = this.props.form.getFieldsValue();
+        const value = {...values};
+        value.date = this.selectDate;
+        const d = await api.register(value);
+        if(d.msg){
+          showError(d.msg);
+        }else{
+          showMessage('注册成功！');
+          this.props.history.push('/login');
+        }
       }
     })
+    this.setLoading(false)
   }
 
   @action
@@ -107,7 +123,7 @@ class RegisterForm extends React.Component{
               }
             </Form.Item>
             <Form.Item>
-              <Button style={{marginLeft:'680px'}} type="primary" htmlType="submit">注册</Button>
+              <Button loading={this.loading} style={{marginLeft:'680px'}} type="primary" htmlType="submit">注册</Button>
             </Form.Item>
           </Form>
         </Tabs.TabPane>

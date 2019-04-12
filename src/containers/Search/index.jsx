@@ -4,25 +4,52 @@ import { Tabs, Input, Button, Table } from 'antd';
 import { observer } from 'mobx-react';
 import { observable, action } from 'mobx'
 import { showError } from '../../components/Message';
+import { api } from '../../api';
 
 @observer
 export class Search extends React.Component{
 
   @observable searchIpt = '';
+  @observable tableData = [];
+  @observable loading = false;
 
   @action
   setSearchIpt(val){
     this.searchIpt  = val;
   }
 
+  @action
+  setTableData(val){
+    this.tableData = val;
+  }
+
+  @action
+  setLoading(val){
+    this.loading = val;
+  }
+  
   onSearchChange = (e) => {
     this.setSearchIpt(e.target.value);
   }
 
-  onSearch = () => {
+  onSearch = async() => {
+    this.setLoading(true);
     if(this.searchIpt.length === 0){
       showError('搜索内容不能为空！')
+    }else{
+      try {
+        const d = await api.searchUser(this.searchIpt);
+        if(d.length){
+          delete d[0].password ;
+        }else{
+          showError('用户不存在')
+        }
+        this.setTableData(d);
+      }catch(e){
+        showError(e)
+      }
     }
+    this.setLoading(false);
   }
 
   get columns(){
@@ -59,15 +86,7 @@ export class Search extends React.Component{
   }
 
   get dataSource(){
-    return [
-      {
-        key : 1,
-        name : '张三',
-        date : '2012/09/12',
-        tie : '信息工程学院',
-        class : '12计科',
-      },
-    ]
+    return this.tableData;
   }
 
   render(){
@@ -80,8 +99,9 @@ export class Search extends React.Component{
               placeholder="请输入用户名"
               onChange={this.onSearchChange}  
               value={this.searchIpt}
+              onKeyDown={(e)=>{e.keyCode === 13 && this.onSearch() }}
             />
-            <Button onClick={this.onSearch} type="primary" className="search-btn">搜索</Button>
+            <Button loading={this.loading} onClick={this.onSearch} type="primary" className="search-btn">搜索</Button>
           </div>
           <div className="result-box">
             <div className="result-table">
