@@ -3,6 +3,7 @@ import { Menu, Icon, Dropdown } from 'antd';
 import './index.scss';
 import { Link } from 'react-router-dom';
 import { baseInject } from '../History/history';
+import { cookie } from '../Cookie';
 
 @baseInject
 export class Navbar extends React.Component{
@@ -68,18 +69,25 @@ export class Navbar extends React.Component{
           </div>
           <div className="user-box">
             {
-              true ? <div className="login-box">
+              !this.stores.username ? <div className="login-box">
                 <Icon type="user" className={this.stores.loginSelected === 'login' ? 'nav-link-active' : ''}/>
                   <Link to="/login" className={this.stores.loginSelected === 'login' ? 'nav-link-active' : ''}>登陆 </Link>
                   <span>/</span>
                   <Link to="/register" className={this.stores.loginSelected === 'register' ? 'nav-link-active' : ''}> 注册</Link>
               </div> : <Dropdown
                 overlay={
-                  <Menu style={{width : '100px',textAlign:'center'}}><Menu.Item key="quit">登出</Menu.Item></Menu>
+                  <Menu style={{width : '100px',textAlign:'center'}}>
+                    <Menu.Item onClick={()=>{
+                        cookie.removeCookie('user')
+                        this.stores.setUsername(undefined)
+                      }} key="quit">
+                      登出
+                    </Menu.Item>
+                  </Menu>
                 }
                 placement="bottomCenter"
               >
-                <a onClick={(e)=>{e.preventDefault()}}>Relics<Icon type="down" style={{ marginLeft : '5px'}}/></a>
+                <a onClick={(e)=>{e.preventDefault()}}>{this.stores.username}<Icon type="down" style={{ marginLeft : '5px'}}/></a>
               </Dropdown>
             }
           </div>

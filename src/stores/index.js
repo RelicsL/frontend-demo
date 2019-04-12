@@ -4,6 +4,7 @@ export class Stores{
   
   @observable linkSelected = 'learning';
   @observable loginSelected = '';
+  @observable username;
 
   @action
   setLinkSelected(val){
@@ -13,6 +14,11 @@ export class Stores{
   @action
   setLoginSelected(val){
     this.loginSelected = val;
+  }
+
+  @action
+  setUsername(val){
+    this.username = val;
   }
 
 }

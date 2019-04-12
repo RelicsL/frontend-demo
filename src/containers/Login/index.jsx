@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom';
 import { api } from '../../api';
 import { showError, showMessage } from '../../components/Message';
 import { baseInject } from '../../components/History/history';
+import { cookie } from '../../components/Cookie'
 
 @baseInject
 class LoginForm extends React.Component{
@@ -14,11 +15,17 @@ class LoginForm extends React.Component{
       if(!err){
         const values = this.props.form.getFieldsValue();
         const d = await api.login(values.name,values.password);
-        if(d){
-          showError(d.msg);
-        }else{
+        if(d.success){
           showMessage('登陆成功');
-          this.props.history.push('/learning')
+          if(values.remember){
+            cookie.setCookie('user',d.success.data.name,30);
+          }else{
+            cookie.setCookie('user',d.success.data.name)
+          }
+          this.props.history.push('/learning');
+          this.props.stores.setUsername(d.success.data.name);
+        }else{
+          showError(d.error.msg);
         }
       }
     })

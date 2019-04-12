@@ -40,11 +40,11 @@ export class Search extends React.Component{
       try {
         const d = await api.searchUser(this.searchIpt);
         if(d.length){
-          delete d[0].password ;
+          d[0].key = d[0]._id;
+          this.setTableData(d);
         }else{
           showError('用户不存在')
         }
-        this.setTableData(d);
       }catch(e){
         showError(e)
       }

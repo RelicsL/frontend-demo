@@ -14,10 +14,18 @@ import { Login } from '../Login';
 import { Register } from '../Register';
 import { NotFound } from '../NotFound';
 import { configure } from 'mobx';
+import { cookie } from '../../components/Cookie';
+import { baseInject } from '../../components/History/history';
 
 configure({enforceActions: 'always'})
 
+@baseInject
 export class App extends Component {
+
+  componentWillMount(){
+    const user = cookie.getCookie('user');
+    this.props.stores.setUsername(user);
+  }
 
   render() {
     return (
