@@ -43,7 +43,8 @@ export class Search extends React.Component{
           d[0].key = d[0]._id;
           this.setTableData(d);
         }else{
-          showError('用户不存在')
+          this.setTableData([]);
+          showError('用户不存在');
         }
       }catch(e){
         showError(e)
