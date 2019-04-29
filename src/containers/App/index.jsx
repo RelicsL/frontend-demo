@@ -16,6 +16,7 @@ import { NotFound } from '../NotFound';
 import { configure } from 'mobx';
 import { cookie } from '../../components/Cookie';
 import { baseInject } from '../../components/History/history';
+import { Forum } from '../Forum';
 
 configure({enforceActions: 'always'})
 
@@ -41,6 +42,7 @@ export class App extends Component {
                 <Route exact path="/news" component={News} />
                 <Route path="/scenery" component={Scenery} />
                 <Route path="/search" component={Search} />
+                <Route path="/forum" component={Forum} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
                 <Redirect from="/" exact to="/learning"/>

@@ -24,6 +24,8 @@ export class Navbar extends React.Component{
       this.stores.setLinkSelected('search');
     }else if(this.path.includes('learning')){
       this.stores.setLinkSelected('learning');
+    }else if(this.path.includes('forum')){
+      this.stores.setLinkSelected('forum')
     }else{
       this.stores.setLinkSelected('')
     }
@@ -64,6 +66,9 @@ export class Navbar extends React.Component{
               </Menu.Item>
               <Menu.Item key="search" className={this.stores.linkSelected === 'search' ? 'nav-link-active' : ''} >
                 <Link to="/search">用户查找</Link>
+              </Menu.Item>
+              <Menu.Item key="forum" className={this.stores.linkSelected === 'forum' ? 'nav-link-active' : ''} >
+                <Link to="/forum">校友论坛</Link>
               </Menu.Item>
             </Menu>
           </div>
