@@ -115,7 +115,7 @@ export class Detail extends React.Component{
                           title={<span className="comment-author">{`#${index + 1}楼 ${item.author}`}</span>}
                           description={<div>{item.comment}</div>}
                         />
-                        {item.author === this.dataSource.author || item.author === this.props.stores.username ?
+                        {this.props.stores.username === this.dataSource.author || item.author === this.props.stores.username ?
                           <a onClick={()=>this.deleteComment(index,this.did)}>删除</a> : null}
                       </List.Item>
                     )}
