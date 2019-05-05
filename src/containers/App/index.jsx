@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './index.scss';
 import './common.scss';
 import './reset.scss';
+import './base.scss';
 import  { Navbar }  from '../../components/Navbar';
 import { Route, Switch, Redirect } from 'react-router';
 import { MoreList } from '../MoreList';
@@ -17,6 +18,8 @@ import { configure } from 'mobx';
 import { cookie } from '../../components/Cookie';
 import { baseInject } from '../../components/History/history';
 import { Forum } from '../Forum';
+import { ForumEdit } from '../Forum/ForumEdit';
+import { UserRoute } from '../../components/UserRoute';
 
 configure({enforceActions: 'always'})
 
@@ -40,11 +43,12 @@ export class App extends Component {
                 <Route path="/:pid/detail/:did" component={Detail} />
                 <Route exact path="/learning" component={Learning} />
                 <Route exact path="/news" component={News} />
-                <Route path="/scenery" component={Scenery} />
-                <Route path="/search" component={Search} />
-                <Route path="/forum" component={Forum} />
-                <Route path="/login" component={Login} />
-                <Route path="/register" component={Register} />
+                <Route exact path="/scenery" component={Scenery} />
+                <Route exact path="/search" component={Search} />
+                <UserRoute exact path="/forum/edit" component={ForumEdit} />
+                <UserRoute exact path="/forum" component={Forum} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/register" component={Register} />
                 <Redirect from="/" exact to="/learning"/>
                 <Route component={NotFound} />
               </Switch>

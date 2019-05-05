@@ -49,7 +49,6 @@ export class News extends React.Component{
                 renderItem={item => (
                   <List.Item>
                     <List.Item.Meta
-                      avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
                       title={<Link to={`/learning/detail/${item.id}`}>{item.title}</Link>}
                       description={item.discription}
                     />

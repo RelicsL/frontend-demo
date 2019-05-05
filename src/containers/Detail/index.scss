@@ -1,7 +1,7 @@
 .detail-box{
   padding: 0 50px;
   
-  .title{
+  .content-title{
     text-align: center;
     font-size: 20px;
   }
@@ -15,4 +15,47 @@
     text-indent:2em;
   }
 
+  .author-box{
+    text-align: center;
+  }
+
+  .comment-box{
+    margin-top: 100px;
+
+    hr{
+      border-color: rgba(0,0,0,.25)
+    }
+
+    h4{
+      margin-top: 20px;
+    }
+
+    .comment-text{
+      display: block;
+      margin: 20px auto;
+      width: 800px;
+      height: 120px;
+    }
+
+    .btn-wrapper{
+      width: 800px;
+      margin: 0 auto;
+      text-align: right;
+    }
+
+    .comment-author{
+      font-weight: normal;
+      font-size: 14px;
+    }
+
+  }
+  
+}
+
+.ant-typography ul, .ant-typography ol{
+  margin: 0;
+}
+.ant-typography ul li{
+  margin: 5px;
+  padding: 0;
 }

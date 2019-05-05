@@ -44,7 +44,6 @@ export class MoreList extends React.Component{
               renderItem={item => (
                 <List.Item>
                   <List.Item.Meta
-                    avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
                     title={<Link to={`/${this.pid}/detail/${item.id}`}>{item.title}</Link>}
                     description={item.discription}
                   />

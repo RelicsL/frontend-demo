@@ -55,7 +55,8 @@ class RegisterForm extends React.Component{
             >
               {
                 getFieldDecorator('name',{
-                  rules : [
+                  rules: [
+                    { transform: (value) => value && value.trim() },
                     { required : true, message : '请输入用户名' },
                     { max : 20, message : '用户名不得超过20个字符' }
                   ]

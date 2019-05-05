@@ -6,6 +6,13 @@ import { observer } from 'mobx-react';
 import { observable, action } from 'mobx';
 import { api } from '../../api';
 
+const IconText = ({ type, text , did}) => (
+  <Link style={{color:'rgba(0,0,0,.65)'}} to={`/forum/detail/${did}`}>
+    <Icon type={type} style={{ marginRight: 8 }} />
+    {text}
+  </Link>
+);
+
 @observer
 export class Forum extends React.Component{
 
@@ -25,7 +32,7 @@ export class Forum extends React.Component{
   }
 
   async componentWillMount(){
-    const d = await api.getListData(this.pid);
+    const d = await api.getForum();
     this.setListData(d)
   }
 
@@ -44,10 +51,10 @@ export class Forum extends React.Component{
                 pagination="bottom"
                 locale={{emptyText:'暂无数据'}}
                 renderItem={item => (
-                  <List.Item>
+                  <List.Item actions={[<IconText type="message" text={item.comments.length} did={item._id} />]}>
                     <List.Item.Meta
-                      title={<Link to={`/${this.pid}/detail/${item.id}`}>{item.title}</Link>}
-                      description={item.discription}
+                      title={<Link to={`/forum/detail/${item._id}`}>{item.title}</Link>}
+                      description={item.desc}
                     />
                   </List.Item>
                 )}
