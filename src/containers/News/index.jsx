@@ -33,7 +33,7 @@ export class News extends React.Component{
             <Layout.Sider theme="light" className="sider" width="420px">
               <Carousel autoplay>
               {this.dataSource.map((val,index)=><div key={index} className="carouse-item">
-                  <Link to={`/news/detail/${val.id}`}>
+                  <Link to={`/news/detail/${val._id}`}>
                     <img src={val.img}/>  
                   </Link>
                   <p>{val.title}</p>
@@ -49,7 +49,7 @@ export class News extends React.Component{
                 renderItem={item => (
                   <List.Item>
                     <List.Item.Meta
-                      title={<Link to={`/learning/detail/${item.id}`}>{item.title}</Link>}
+                      title={<Link to={`/news/detail/${item._id}`}>{item.title}</Link>}
                       description={item.discription}
                     />
                   </List.Item>

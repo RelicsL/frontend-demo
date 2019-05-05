@@ -44,7 +44,7 @@ export class MoreList extends React.Component{
               renderItem={item => (
                 <List.Item>
                   <List.Item.Meta
-                    title={<Link to={`/${this.pid}/detail/${item.id}`}>{item.title}</Link>}
+                    title={<Link to={`/${this.pid}/detail/${item._id}`}>{item.title}</Link>}
                     description={item.discription}
                   />
                 </List.Item>
