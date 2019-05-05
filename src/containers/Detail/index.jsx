@@ -112,7 +112,7 @@ export class Detail extends React.Component{
                     renderItem={(item, index)=> (
                       <List.Item>
                         <List.Item.Meta
-                          title={<span className="comment-author">{`#${index + 1}楼 ${item.author}`}{ console.log(item) }</span>}
+                          title={<span className="comment-author">{`#${index + 1}楼 ${item.author}`}</span>}
                           description={<div>{item.comment}</div>}
                         />
                         {item.author === this.dataSource.author || item.author === this.props.stores.username ?
