@@ -83,8 +83,9 @@ export class Navbar extends React.Component{
                 overlay={
                   <Menu style={{width : '100px',textAlign:'center'}}>
                     <Menu.Item onClick={()=>{
-                        cookie.removeCookie('user')
-                        this.stores.setUsername(undefined)
+                        cookie.removeCookie('user');
+                        this.stores.setUsername(undefined);
+                        this.props.history.push('/learning');
                       }} key="quit">
                       登出
                     </Menu.Item>
