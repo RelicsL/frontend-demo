@@ -4,7 +4,7 @@ import { Tabs, Typography, Input, Button, List } from 'antd';
 import './index.scss';
 import { api } from '../../api';
 import { observable, action, toJS } from 'mobx';
-import { showError, showMessage } from '../../components/Message'
+import { showError, showMessage, getError } from '../../components/Message'
 
 @baseInject
 export class Detail extends React.Component{
@@ -63,12 +63,16 @@ export class Detail extends React.Component{
     await api.deleteComment(index, did);
     const d = await api.getDetail(this.pid, this.did);
     this.setDetailData(d);
-    showMessage('操作成功')
+    showMessage('操作成功');
   }
 
-  async componentWillMount(){
-    const d = await api.getDetail(this.pid,this.did)
-    this.setDetailData(d)
+  async componentWillMount() {
+    try {
+      const d = await api.getDetail(this.pid, this.did);
+      this.setDetailData(d);
+    } catch (err) {
+      showError(getError(err));
+    }
   }
 
   render(){

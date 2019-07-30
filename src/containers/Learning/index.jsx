@@ -4,6 +4,7 @@ import { Layout, Carousel, Tabs, List, Avatar, Icon, Spin } from 'antd';
 import { api } from '../../api';
 import { observer } from 'mobx-react';
 import { action, observable } from 'mobx';
+import { showError, getError } from '../../components/Message';
 
 @observer
 export class Learning extends React.Component{
@@ -19,9 +20,13 @@ export class Learning extends React.Component{
     return this.listData.slice(0,4);
   }
 
-  async componentWillMount(){
-    const d = await api.getListData('learning');
-    this.setListData(d);
+  async componentWillMount() {
+    try {
+      const d = await api.getListData('learning');
+      this.setListData(d);
+    } catch (err) {
+      showError(getError(err));
+    }
   }
 
   render(){

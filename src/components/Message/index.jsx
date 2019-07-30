@@ -25,3 +25,7 @@ export function showInfo(s) {
   });
   message.info(s);
 }
+
+export function getError(err){
+  return err.response.data.msg;
+}

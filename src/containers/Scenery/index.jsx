@@ -27,7 +27,7 @@ export class Scenery extends React.Component{
     return (
       <Tabs>
         <Tabs.TabPane tab="校园风光" key="校园风光" className="scenery-box">
-          <Spin spinning={!this.dataSource.length} size="large" tip="加载中...">  
+          <Spin spinning={!this.dataSource} size="large" tip="加载中...">  
             {
               this.dataSource.map((val,index)=>
               <a key={index} href={val.img} target="blank">
