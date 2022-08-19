@@ -1,0 +1,66 @@
+
+@text-baseColor: #549BE7;
+@global-font-family: sophone-font, Microsoft YaHei, SimSun, arial;
+@table-bg-color: #F8FBFF;     // table背景色
+@table-border: 1px solid #E4EAF2;  // table border色
+@table-header-text-color: #28374F;  // table header 字体颜色
+@table-hover-bg: @text-baseColor;    // table hover  背景色
+@table-hover-text-color: #FFF;         // table hover  字体色
+@table-even-bg-color: transparent;     // table 奇数行背景色
+@table-odd-bg-color: @table-bg-color;  // table 偶数行背景色
+
+
+.ant-btn{
+  height: 36px;
+  width: 136px;
+}
+
+.ant-table-wrapper:not(.lab-table) {
+
+  .ant-table {
+    border: @table-border;
+
+    font-family: @global-font-family !important;
+    .ant-table-thead > tr {
+      & > th {
+        font-size: 12px;
+        color: @table-header-text-color;
+        font-weight: bold;
+        padding: 8px 8px 8px 30px;
+        background: @table-bg-color!important;
+        border-bottom-color: @table-border;
+      }
+    }
+
+    .ant-table-tbody > tr {
+      background: @table-even-bg-color;
+
+      &:hover {
+        & > td {
+          background: @table-hover-bg;
+          font-weight: bolder;
+          color: @table-hover-text-color;
+        }
+      }
+      & > td {
+        font-size: 12px;
+        color: @text-baseColor;
+        padding: 8px 8px 8px 30px;
+        border-bottom-color: @table-border;
+      }
+      &:nth-of-type(2n) {
+        background: @table-odd-bg-color;
+      }
+    }
+    .ant-table-tbody > tr:last-child {
+      & > td {
+        border-bottom-width: 0;
+      }
+    }
+    .ant-table-placeholder {
+      background: @table-bg-color!important;
+      color: rgba(0 , 0 , 0 , .45);
+      border: none;
+    }
+  }
+}

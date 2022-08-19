@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './index.scss';
-import './common.scss';
-import './reset.scss';
-import './base.scss';
+import './index.less';
+import './common.less';
+import './reset.less';
+import './base.less';
 import  { Navbar }  from '../../components/Navbar';
 import { Route, Switch, Redirect } from 'react-router';
 import { MoreList } from '../MoreList';

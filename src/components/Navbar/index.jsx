@@ -1,6 +1,6 @@
 import React from 'react';
 import { Menu, Icon, Dropdown } from 'antd';
-import './index.scss';
+import './index.less';
 import { Link } from 'react-router-dom';
 import { baseInject } from '../History/history';
 import { cookie } from '../Cookie';

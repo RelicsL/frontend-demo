@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.scss';
+import './index.less';
 import notFoundImg from '../../images/404.png'
 
 export class NotFound extends React.Component{

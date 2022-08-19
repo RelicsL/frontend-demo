@@ -1,4 +1,5 @@
 import { message } from "antd";
+import get from 'lodash/get';
 
 export function showError(s) {
   message.destroy();
@@ -27,5 +28,5 @@ export function showInfo(s) {
 }
 
 export function getError(err){
-  return err.response.data.msg;
+  return get(err, 'response.data.msg');
 }

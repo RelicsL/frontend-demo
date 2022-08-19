@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.scss';
+import './index.less';
 import { Tabs, Card, Spin } from 'antd';
 import { action, observable } from 'mobx';
 import { observer } from 'mobx-react';

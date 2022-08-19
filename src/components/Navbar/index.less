@@ -1,7 +1,7 @@
-$darkBlue: #24467f;
-$normalWhite : rgba(255, 255, 255, 0.65);
+@darkBlue: #24467f;
+@normalWhite : rgba(255, 255, 255, 0.65);
 .main-header{
-  background: $darkBlue;
+  background: @darkBlue;
   height: 80px;
   padding: 0 20px;
 
@@ -21,14 +21,14 @@ $normalWhite : rgba(255, 255, 255, 0.65);
       }
   
       .ant-menu{
-        background: $darkBlue;
+        background: @darkBlue;
         border: none;
         padding: 0 20px;
   
         .ant-menu-item{
-          color: $normalWhite;
+          color: @normalWhite;
           a{
-            color: $normalWhite;
+            color: @normalWhite;
           }
           border: none;
         }
@@ -48,7 +48,7 @@ $normalWhite : rgba(255, 255, 255, 0.65);
       line-height: 80px;
 
       a,.anticon-user,span{
-        color: $normalWhite;
+        color: @normalWhite;
       }
 
       .anticon-user{

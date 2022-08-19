@@ -1,7 +1,7 @@
 import React from 'react';
 import { baseInject } from '../../components/History/history';
 import { Tabs, Typography, Input, Button, List } from 'antd';
-import './index.scss';
+import './index.less';
 import { api } from '../../api';
 import { observable, action, toJS } from 'mobx';
 import { showError, showMessage, getError } from '../../components/Message'

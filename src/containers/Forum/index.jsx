@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tabs, Icon, Spin, List } from 'antd';
-import './index.scss';
+import './index.less';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { observable, action } from 'mobx';

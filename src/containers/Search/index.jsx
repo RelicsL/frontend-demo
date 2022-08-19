@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.scss'
+import './index.less'
 import { Tabs, Input, Button, Table } from 'antd';
 import { observer } from 'mobx-react';
 import { observable, action } from 'mobx'
